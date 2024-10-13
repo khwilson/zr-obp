@@ -205,7 +205,7 @@ class MarginalizedInverseProbabilityWeighting(BaseOffPolicyEstimator):
         w_x_a = pi_e / pi_b
         w_x_a = np.where(w_x_a < np.inf, w_x_a, 0)
         c = OneHotEncoder(
-            sparse=False,
+            sparse_output=False,
             drop="first",
         ).fit_transform(action_embed)
         x_e = np.c_[context, c]

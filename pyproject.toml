@@ -1,35 +1,61 @@
-[tool.poetry]
+[project]
 name = "obp"
-version = "0.5.5"
+version = "0.6.0"
 description = "Open Bandit Pipeline: a python library for off-policy evaluation and learning"
-authors = ["Yuta Saito <ys552@cornell.edu>"]
-license = "Apache License 2.0"
+authors = [
+    { name = "Yuta Saito", email = "ys552@cornell.edu" }
+]
+license = { text = "Apache-2.0" }
+dependencies = [
+    "scikit-learn>=1.5.2",
+    "pandas>=2.2.3",
+    "numpy>=2.1.2",
+    "matplotlib>=3.9.2",
+    "tqdm>=4.66.5",
+    "pyyaml>=6.0.2",
+    "seaborn>=0.13.2",
+    "pyieoe>=0.1.1",
+    "torch>=2.4.1",
+    "pingouin>=0.5.5",
+    "mypy-extensions>=1.0.0",
+]
+readme = "README.md"
+requires-python = ">= 3.8"
 
-[tool.poetry.dependencies]
-python = ">=3.7.1,<3.10"
-torch = "^1.9.0"
-scikit-learn = "1.0.2"
-pandas = "^1.3.2"
-numpy = "^1.21.2"
-matplotlib = "^3.4.3"
-tqdm = "^4.62.2"
-scipy = "1.7.3"
-PyYAML = "^5.4.1"
-seaborn = "^0.11.2"
-pyieoe = "^0.1.1"
-pingouin = "^0.4.0"
-mypy-extensions = "^0.4.3"
-Pillow = "9.1.1"
-
-[tool.poetry.dev-dependencies]
-flake8 = "^3.9.2"
-black = "22.1.0"
-pytest = "^6.2.5"
-isort = "^5.9.3"
+classifiers=[
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Mathematics",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Software Development",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "License :: OSI Approved :: Apache Software License",
+]
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+dev-dependencies = [
+    "flake8>=7.1.1",
+    "black>=24.10.0",
+    "pytest>=8.3.3",
+    "isort>=5.13.2",
+]
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/obp"]
 
 [tool.isort]
 profile = 'black'

@@ -85,7 +85,7 @@ class ImportanceWeightEstimator(BaseEstimator):
             self.base_model_list = [
                 clone(
                     CalibratedClassifierCV(
-                        base_estimator=self.base_model, cv=self.calibration_cv
+                        estimator=self.base_model, cv=self.calibration_cv
                     ),
                 )
                 for _ in np.arange(self.len_list)
@@ -440,7 +440,7 @@ class PropensityScoreEstimator(BaseEstimator):
             self.base_model_list = [
                 clone(
                     CalibratedClassifierCV(
-                        base_estimator=self.base_model, cv=self.calibration_cv
+                        estimator=self.base_model, cv=self.calibration_cv
                     ),
                 )
                 for _ in np.arange(self.len_list)
